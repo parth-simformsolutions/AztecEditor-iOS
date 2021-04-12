@@ -25,8 +25,7 @@ class CodeFormatter: AttributeFormatter {
     func apply(to attributes: [NSAttributedString.Key: Any], andStore representation: HTMLRepresentation?) -> [NSAttributedString.Key: Any] {
         var resultingAttributes = attributes
 
-        resultingAttributes[.font] = monospaceFont
-        resultingAttributes[.backgroundColor] = self.backgroundColor
+        resultingAttributes[.backgroundColor] = UIColor.red
         var representationToUse = HTMLRepresentation(for: .element(HTMLElementRepresentation.init(name: "code", attributes: [])))
         if let requestedRepresentation = representation {
             representationToUse = requestedRepresentation
@@ -39,7 +38,6 @@ class CodeFormatter: AttributeFormatter {
     func remove(from attributes: [NSAttributedString.Key: Any]) -> [NSAttributedString.Key: Any] {
         var resultingAttributes = attributes
 
-        resultingAttributes.removeValue(forKey: .font)
         resultingAttributes.removeValue(forKey: .backgroundColor)
         resultingAttributes.removeValue(forKey: htmlRepresentationKey)
 
