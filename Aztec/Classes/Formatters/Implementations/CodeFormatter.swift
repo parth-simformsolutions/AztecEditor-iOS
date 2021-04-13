@@ -26,7 +26,7 @@ class CodeFormatter: AttributeFormatter {
         var resultingAttributes = attributes
 
         resultingAttributes[.backgroundColor] = backgroundColor
-        var representationToUse = HTMLRepresentation(for: .element(HTMLElementRepresentation.init(name: "code", attributes: [])))
+        var representationToUse = HTMLRepresentation(for: .element(HTMLElementRepresentation.init(name: "strong", attributes: [])))
         if let requestedRepresentation = representation {
             representationToUse = requestedRepresentation
         }

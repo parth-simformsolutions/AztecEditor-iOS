@@ -1061,7 +1061,6 @@ open class TextView: UITextView {
 
     open func toggleCode(range: NSRange) {
         let formatter = CodeFormatter()
-        formatter.placeholderAttributes = self.defaultAttributes
         toggle(formatter: formatter, atRange: range)
     }
 
