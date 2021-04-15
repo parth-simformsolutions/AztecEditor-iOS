@@ -1257,6 +1257,8 @@ open class TextView: UITextView {
         }
         
         typingAttributes.removeValue(forKey: NSAttributedString.Key.codeHtmlRepresentation)
+        self.toggleCode(range: range)
+        self.toggleCode(range: range)
     }
 
 
