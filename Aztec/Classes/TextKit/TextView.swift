@@ -710,6 +710,8 @@ open class TextView: UITextView {
         restoreDefaultFontIfNeeded()
 
         ensureRemovalOfLinkTypingAttribute(at: selectedRange)
+        
+        ensureRemovalOfCodeTypingAttribute(at: selectedRange)
 
         super.insertText(text)
 
@@ -1248,6 +1250,15 @@ open class TextView: UITextView {
 
         typingAttributes.removeValue(forKey: .link)
     }
+    
+    private func ensureRemovalOfCodeTypingAttribute(at range: NSRange) {
+        guard typingAttributes[NSAttributedString.Key.codeHtmlRepresentation] != nil else {
+            return
+        }
+        
+        typingAttributes.removeValue(forKey: NSAttributedString.Key.codeHtmlRepresentation)
+    }
+
 
 
     /// Force the SDK to Redraw the cursor, asynchronously, if the edited text (inserted / deleted) requires it.
