@@ -550,7 +550,7 @@ open class TextView: UITextView {
         insertText(String(.lineSeparator))
     }
 
-    @objc func handleShiftTab(command: UIKeyCommand) {
+    @objc public func handleShiftTab(command: UIKeyCommand) {
         
         let lists = TextListFormatter.lists(in: typingAttributes)
         let quotes = BlockquoteFormatter.blockquotes(in: typingAttributes)
@@ -566,7 +566,7 @@ open class TextView: UITextView {
         }
     }
 
-    @objc func handleTab(command: UIKeyCommand) {
+    @objc public func handleTab(command: UIKeyCommand) {
         
         let lists = TextListFormatter.lists(in: typingAttributes)
         let quotes = BlockquoteFormatter.blockquotes(in: typingAttributes)
