@@ -562,6 +562,9 @@ open class TextView: UITextView {
             indent(blockquote: quote, increase: false)
             
         } else {
+            if self.text.last == Character.Name.tab.rawValue {
+                self.deleteBackward()
+            }
             return
         }
     }
