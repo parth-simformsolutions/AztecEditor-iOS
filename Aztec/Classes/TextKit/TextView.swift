@@ -715,16 +715,15 @@ open class TextView: UITextView {
         ensureRemovalOfLinkTypingAttribute(at: selectedRange)
         if self.text.isEmpty && !(self.formattingIdentifiersSpanningRange(self.selectedRange).contains(FormattingIdentifier.header2)) {
             self.toggleHeader(.h2, range: .init(location: 0, length: self.selectedRange.location))
-        } else if (self.formattingIdentifiersSpanningRange(self.selectedRange).contains(FormattingIdentifier.header2)) && !self.text.contains("\n") && text == "\n" {
+        } else if (self.formattingIdentifiersSpanningRange(self.selectedRange).contains(FormattingIdentifier.header2)) && !self.text.contains( where: { $0.isNewline }) && text == "\n" {
             super.insertText(text)
             self.toggleHeader(.h2, range: self.selectedRange)
             return
-        } else if (self.text.count >= 150 && (self.formattingIdentifiersSpanningRange(self.selectedRange).contains(FormattingIdentifier.header2)) && !self.text.contains("\n")) {
+        } else if (self.text.count >= 150 && (self.formattingIdentifiersSpanningRange(self.selectedRange).contains(FormattingIdentifier.header2)) && !self.text.contains( where: { $0.isNewline })) {
             self.text += "\n"
             self.toggleHeader(.h2, range: self.selectedRange)
         }
         ensureRemovalOfCodeTypingAttribute(at: selectedRange)
-
         super.insertText(text)
 
         evaluateRemovalOfSingleLineParagraphAttributesAfterSelectionChange()
